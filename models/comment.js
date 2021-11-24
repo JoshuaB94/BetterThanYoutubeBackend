@@ -21,8 +21,8 @@ const commentSchema = new mongoose.Schema(
 
 function validateComment(comment) {
     const schema = Joi.object({
-        videoId: Joi.string().required(),
-        text: Joi.string().required()
+        text: Joi.string().required(),
+        videoId: Joi.string().required()
     });
     return schema.validate(comment);
 }
@@ -39,7 +39,7 @@ const Comment = mongoose.model('Comment', commentSchema);
 
 exports.Reply = Reply;
 exports.Comment = Comment;
-exports.validate = validateComment;
-// exports.validate = validateReply;
+exports.validateComment = validateComment;
+exports.validateReply = validateReply;
 exports.commentSchema = commentSchema;
-// exports.replySchema = replySchema;
+exports.replySchema = replySchema;
