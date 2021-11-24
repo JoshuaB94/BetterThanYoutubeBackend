@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-const mongoose = require('mongoose');
-
 const replySchema = new mongoose.Schema(
     {
         text: { type: String, required: true},
@@ -42,6 +40,6 @@ const Comment = mongoose.model('Comment', commentSchema);
 exports.Reply = Reply;
 exports.Comment = Comment;
 exports.validate = validateComment;
-exports.validate = validateReply;
+// exports.validate = validateReply;
 exports.commentSchema = commentSchema;
-exports.replySchema = replySchema;
+// exports.replySchema = replySchema;

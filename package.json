@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/JoshuaB94/BetterThanYoutubeBackend#readme",
   "dependencies": {
+    "config": "^3.3.6",
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "mongoose": "^6.0.13",
