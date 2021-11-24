@@ -1,0 +1,26 @@
+{
+  "name": "betterthanyoutubebackend",
+  "version": "1.0.0",
+  "description": "Week Six Group Project - YT Clone",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaB94/BetterThanYoutubeBackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaB94/BetterThanYoutubeBackend/issues"
+  },
+  "homepage": "https://github.com/JoshuaB94/BetterThanYoutubeBackend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15"
+  }
+}
