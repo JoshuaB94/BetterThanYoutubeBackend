@@ -38,7 +38,7 @@ router.put('/:id', async (req, res) => {
 
         const comment = await Comment.findByIdAndUpdate(req.params.id, 
             {
-                videoId: req.params.id,
+                videoId: req.body.videoId,
                 text: req.body.text
             },
             { new: true }
