@@ -2,6 +2,7 @@ const { Comment, Reply, validateComment, validateReply } = require('../models/co
 const express = require('express');
 const router = express.Router();
 
+//GET Comments Endpoint
 router.get('/:vidId', async (req, res) => {
     try {
         const comments = await Comment.find({videoId: req.params.vidId});
@@ -11,6 +12,7 @@ router.get('/:vidId', async (req, res) => {
     }
 });
 
+//POST Comment Endpoint
 router.post('/', async (req, res) => {
     try {
         const { error } = validateComment(req.body);
@@ -31,6 +33,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//PUT Comment Endpoint
 router.put('/:id', async (req, res) => {
     try {
 
@@ -72,6 +75,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+//POST Replies Endpoint
 router.post('/:id/replies', async (req, res) => {
     try {
         const comment = await Comment.findById(req.params.id);
