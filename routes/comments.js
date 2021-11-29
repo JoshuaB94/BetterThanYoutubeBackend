@@ -2,9 +2,9 @@ const { Comment, Reply, validateComment, validateReply } = require('../models/co
 const express = require('express');
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/:vidId', async (req, res) => {
     try {
-        const comments = await Comment.find();
+        const comments = await Comment.find({videoId: req.params.vidId});
         return res.send(comments);
     } catch (ex) {
         return res.status(500).send(`Internal Server Error: ${ex}`);
