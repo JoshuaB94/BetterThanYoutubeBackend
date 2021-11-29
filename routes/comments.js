@@ -74,17 +74,21 @@ router.put('/:id', async (req, res) => {
 
 router.post('/:id/replies', async (req, res) => {
     try {
+        const comment = await Comment.findById(req.params.id);
+
         const { error } = validateReply(req.body);
         if (error)
             return res.status(400).send(error);
-
+            
         const reply = new Reply({
             text: req.body.text
         });
 
-        await reply.save();
+        comment.replies.push(reply);
 
-        return res.send(reply);
+        await comment.save();
+
+        return res.send(comment.replies);
 
     } catch (ex) {
         return res.status(500).send(`Internal Server Error: ${ex}`);
