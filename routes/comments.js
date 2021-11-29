@@ -33,17 +33,33 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const {error} = validateComment(req.body);
-        if (error) return res.status(400).send(error);
+
+        let bodyKeys = Object.getOwnPropertyNames(req.body);
+        let schemaKeys = Object.getOwnPropertyNames(Comment.schema.obj);
+
+        console.log(schemaKeys);
+        console.log(bodyKeys)
+
+        let includesAll = true;
+        bodyKeys.map((someKey) => {
+            if(!schemaKeys.includes(someKey)){
+                includesAll = false;
+            }
+        });
+
+        if(!includesAll)
+            return res.status(400).send('Improper key in body.');
+
 
         const comment = await Comment.findByIdAndUpdate(req.params.id, 
             {
-                videoId: req.body.videoId,
-                text: req.body.text
+                ...req.body
             },
-            { new: true }
+            { new: true}
             );
 
+            const errors = comment.validateSync();
+            console.log(errors);
             if (!comment)
                 return res.status(400).send(`The comment with id "${req.params.id}"
                 does not exist.`);
